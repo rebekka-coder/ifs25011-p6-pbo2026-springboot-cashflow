@@ -55,10 +55,14 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    mkdir -p .trivy-cache || true
+                    mkdir -p .trivy-cache /tmp/.m2
+                    # Pakai cache Maven dari stage Build & Test agar Trivy tidak memanggil Maven Central (HTTP 429)
+                    ln -sfn "$PWD/.m2/repository" /tmp/.m2/repository
                     trivy --version
                     trivy fs \
                         --cache-dir .trivy-cache \
+                        --offline-scan \
+                        --skip-version-check \
                         --scanners vuln \
                         --severity HIGH,CRITICAL \
                         --skip-dirs .m2,target,.trivy-cache,node_modules \
