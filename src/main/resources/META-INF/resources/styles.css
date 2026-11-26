@@ -1,0 +1,65 @@
+/* ===== Cursor pointer untuk elemen interaktif ===== */
+vaadin-button,
+vaadin-menu-bar-item,
+vaadin-context-menu-item,
+vaadin-tab,
+vaadin-drawer-toggle,
+vaadin-upload-file,
+vaadin-side-nav-item,
+vaadin-grid-sorter,
+vaadin-grid-sorter::part(content),
+a {
+  cursor: pointer;
+}
+vaadin-button[disabled],
+vaadin-menu-bar-item[disabled],
+vaadin-context-menu-item[disabled],
+vaadin-tab[disabled] {
+  cursor: not-allowed;
+}
+
+/* ===== Loading indicator global (bar bercahaya) ===== */
+.v-loading-indicator {
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa, #2563eb);
+  box-shadow: 0 0 10px #2563eb, 0 0 4px #60a5fa;
+}
+
+/* ===== Layout & kartu ===== */
+body { background: #f8fafc; }
+.cf-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, .06);
+  box-sizing: border-box;
+}
+.cf-brand { font-size: 1.25rem; margin: 0; padding: .9rem 1rem; color: #2563eb; }
+.cf-header { padding: 0 1rem; }
+.cf-toolbar { flex-wrap: wrap; }
+
+/* ===== Kartu ringkasan ===== */
+.cf-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .75rem; width: 100%; }
+.cf-summary-card { display: flex; flex-direction: column; gap: .25rem; padding: .85rem 1rem; border-radius: 10px; background: #fff; border: 1px solid #e5e7eb; }
+.cf-summary-title { font-size: .8rem; color: #6b7280; }
+.cf-summary-value { font-size: 1.2rem; font-weight: 700; }
+.cf-income .cf-summary-value { color: #16a34a; }
+.cf-expense .cf-summary-value { color: #dc2626; }
+.cf-balance .cf-summary-value { color: #2563eb; }
+
+/* ===== Badge tipe ===== */
+.cf-type { padding: .1rem .55rem; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+.cf-type-income { background: #dcfce7; color: #166534; }
+.cf-type-expense { background: #fee2e2; color: #991b1b; }
+
+/* ===== Modal: header primer #2563EB, footer abu-abu #F3F4F6, tombol di kanan ===== */
+.cf-modal-header {
+  display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+  background: #2563eb; color: #fff; padding: .9rem 1.25rem; font-weight: 600; font-size: 1.05rem;
+}
+.cf-badge { background: rgba(255, 255, 255, .22); color: #fff; padding: .1rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+.cf-modal-body { padding: 1rem 1.25rem; box-sizing: border-box; }
+.cf-modal-footer {
+  display: flex; justify-content: flex-end; align-items: center; gap: .5rem;
+  background: #f3f4f6; border-top: 1px solid #e5e7eb; padding: .75rem 1.25rem;
+}
