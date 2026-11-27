@@ -20,7 +20,9 @@
         <java.version>25</java.version>
         <vaadin.version>25.3.4</vaadin.version>
         <jacoco.version>0.8.14</jacoco.version>
-        <jackson2.version>2.20.0</jackson2.version>
+        <!-- Jackson 2.22.3: memperbaiki CVE-2026-54512, 54513, 68497, 91776, 91777 (jackson-databind) -->
+        <jackson2.version>2.22.3</jackson2.version>
+        <jackson-2-bom.version>${jackson2.version}</jackson-2-bom.version>
     </properties>
 
     <dependencyManagement>
