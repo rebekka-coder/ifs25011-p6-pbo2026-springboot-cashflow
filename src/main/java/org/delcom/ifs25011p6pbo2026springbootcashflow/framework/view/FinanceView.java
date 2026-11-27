@@ -15,6 +15,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.progressbar.ProgressBar;
@@ -43,6 +44,7 @@ public class FinanceView extends VerticalLayout {
 
     public FinanceView(IUserRepository userRepository, FinanceUseCase finance, FinanceAiUseCase ai,
                        FinancePresenter presenter, FileStorage storage) {
+        getElement().setAttribute("role", "main");
         this.finance = finance;
         this.ai = ai;
         this.presenter = presenter;
@@ -60,7 +62,8 @@ public class FinanceView extends VerticalLayout {
         income.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_SUCCESS);
         expense.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
         panel.toolbar().add(aiButton, income, expense);
-        add(panel);
+        add(new H1("Catatan Keuangan"), panel);
+        expand(panel);
         panel.setUser(user.id());
     }
 

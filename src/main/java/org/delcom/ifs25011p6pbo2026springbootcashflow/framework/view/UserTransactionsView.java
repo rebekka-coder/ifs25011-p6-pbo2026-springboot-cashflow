@@ -7,7 +7,7 @@ import org.delcom.ifs25011p6pbo2026springbootcashflow.framework.auth.AuthSession
 import org.delcom.ifs25011p6pbo2026springbootcashflow.usecase.FinanceUseCase;
 import org.delcom.ifs25011p6pbo2026springbootcashflow.usecase.UserUseCase;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
@@ -30,6 +30,7 @@ public class UserTransactionsView extends VerticalLayout implements HasUrlParame
 
     public UserTransactionsView(IUserRepository userRepository, UserUseCase users,
                                 FinanceUseCase finance, FinancePresenter presenter) {
+        getElement().setAttribute("role", "main");
         this.userRepository = userRepository;
         setSizeFull();
         User current = AuthSession.currentUser(userRepository);
@@ -48,7 +49,7 @@ public class UserTransactionsView extends VerticalLayout implements HasUrlParame
             panel.setVisible(e.getValue() != null);
             panel.setUser(e.getValue() == null ? null : e.getValue().id());
         });
-        add(new H2("Transaksi Pengguna (read-only)"), picker, panel);
+        add(new H1("Transaksi Pengguna (read-only)"), picker, panel);
         expand(panel);
     }
 

@@ -9,7 +9,7 @@ import org.delcom.ifs25011p6pbo2026springbootcashflow.usecase.UserUseCase;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.progressbar.ProgressBar;
@@ -28,6 +28,7 @@ public class ProfileView extends VerticalLayout {
     private String photoName;
 
     public ProfileView(IUserRepository userRepository, UserUseCase users, FileStorage storage) {
+        getElement().setAttribute("role", "main");
         User user = AuthSession.currentUser(userRepository);
         if (user == null) {
             return;
@@ -70,7 +71,7 @@ public class ProfileView extends VerticalLayout {
 
         PageCard card = new PageCard();
         card.setMaxWidth("520px");
-        card.add(new H2("Profil"), new Span("Username: " + user.username()), fullName, password,
+        card.add(new H1("Profil"), new Span("Username: " + user.username()), fullName, password,
                 new Span("Foto profil"), upload, progress, save);
         add(card);
     }

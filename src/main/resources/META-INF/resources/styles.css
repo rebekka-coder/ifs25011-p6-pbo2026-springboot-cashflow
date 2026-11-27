@@ -63,3 +63,7 @@ body { background: #f8fafc; }
   display: flex; justify-content: flex-end; align-items: center; gap: .5rem;
   background: #f3f4f6; border-top: 1px solid #e5e7eb; padding: .75rem 1.25rem;
 }
+
+/* ===== Judul halaman (h1) ===== */
+[role="main"] h1 { font-size: 1.5rem; margin: 0 0 .5rem; }
+.cf-card h1 { font-size: 1.4rem; }

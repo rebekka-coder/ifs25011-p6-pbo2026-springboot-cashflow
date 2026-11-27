@@ -99,6 +99,7 @@
                     <excludes>
                         <exclude>**/framework/view/**</exclude>
                         <exclude>**/framework/auth/**</exclude>
+                        <exclude>**/framework/web/**</exclude>
                         <exclude>**/App.class</exclude>
                     </excludes>
                 </configuration>

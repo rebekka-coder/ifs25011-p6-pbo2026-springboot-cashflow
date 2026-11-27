@@ -9,7 +9,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
-import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -25,6 +25,7 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver {
     private final IUserRepository userRepository;
     private final HorizontalLayout header = new HorizontalLayout();
     private final SideNav nav = new SideNav();
+    private final DrawerToggle toggle = new DrawerToggle();
     private Integer builtFor;
 
     public MainLayout(IUserRepository userRepository) {
@@ -33,10 +34,14 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver {
         header.setWidthFull();
         header.setAlignItems(FlexComponent.Alignment.CENTER);
         header.addClassName("cf-header");
-        addToNavbar(new DrawerToggle(), header);
-        H1 brand = new H1("Cashflow");
+        header.getElement().setAttribute("role", "banner");
+        addToNavbar(header);
+        Div brand = new Div("Cashflow");
         brand.addClassName("cf-brand");
-        addToDrawer(brand, nav);
+        Div menu = new Div(brand, nav);
+        menu.getElement().setAttribute("role", "navigation");
+        menu.getElement().setAttribute("aria-label", "Menu utama");
+        addToDrawer(menu);
     }
 
     @Override
@@ -76,7 +81,7 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver {
 
         Span spacer = new Span();
         header.removeAll();
-        header.add(spacer, new Span(user.fullName() + " (" + user.role() + ")"), avatar);
+        header.add(toggle, spacer, new Span(user.fullName() + " (" + user.role() + ")"), avatar);
         header.expand(spacer);
     }
 }

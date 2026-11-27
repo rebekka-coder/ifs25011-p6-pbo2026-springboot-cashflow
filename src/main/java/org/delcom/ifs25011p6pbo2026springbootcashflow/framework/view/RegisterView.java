@@ -8,7 +8,7 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.progressbar.ProgressBar;
@@ -32,6 +32,7 @@ public class RegisterView extends VerticalLayout implements BeforeEnterObserver 
     private final ProgressBar progress = new ProgressBar();
 
     public RegisterView(IUserRepository userRepository, AuthUseCase auth) {
+        getElement().setAttribute("role", "main");
         this.userRepository = userRepository;
         this.auth = auth;
         setSizeFull();
@@ -52,7 +53,7 @@ public class RegisterView extends VerticalLayout implements BeforeEnterObserver 
         PageCard card = new PageCard();
         card.setWidth("380px");
         card.setMaxWidth("94vw");
-        card.add(new H2("Daftar Akun"), fullName, username, password, progress, submit,
+        card.add(new H1("Daftar Akun"), fullName, username, password, progress, submit,
                 new RouterLink("Sudah punya akun? Masuk", LoginView.class));
         add(card);
     }

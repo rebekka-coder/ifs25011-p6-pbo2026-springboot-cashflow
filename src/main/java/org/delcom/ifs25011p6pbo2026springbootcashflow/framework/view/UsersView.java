@@ -7,7 +7,7 @@ import org.delcom.ifs25011p6pbo2026springbootcashflow.usecase.UserUseCase;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -23,6 +23,7 @@ public class UsersView extends VerticalLayout implements BeforeEnterObserver {
     private final IUserRepository userRepository;
 
     public UsersView(IUserRepository userRepository, UserUseCase users) {
+        getElement().setAttribute("role", "main");
         this.userRepository = userRepository;
         setSizeFull();
         User current = AuthSession.currentUser(userRepository);
@@ -39,7 +40,7 @@ public class UsersView extends VerticalLayout implements BeforeEnterObserver {
                 e -> UI.getCurrent().navigate(UserTransactionsView.class, u.id())))).setHeader("Aksi");
         grid.setItems(users.listUsers());
 
-        add(new H2("Daftar Pengguna"), grid);
+        add(new H1("Daftar Pengguna"), grid);
         expand(grid);
     }
 
